@@ -56,6 +56,7 @@ public class Player {
     private int good;
     
     //Stats (can be 1 to 100)
+    private int intelligence; //Planning, striking places
     private int strength; //Carrying Capacity
     private int stealth; //First Strike + avoiding battle
     private int handtohand; //Hand-to-hand fighting
@@ -83,6 +84,10 @@ public class Player {
     private List<AilmentType> ailments = new ArrayList<>();
     private boolean focus = false;
     private int attackNum;
+    private int headhit;
+    private int armhit;
+    private int leghit;
+    private int bodyhit;
     private int initiative;
     
     public Player(String name){
@@ -908,6 +913,76 @@ public class Player {
      */
     public void setPossessivePronoun(String possessivePronoun) {
         this.possessivePronoun = possessivePronoun;
+    }
+
+    /**
+     * @return the intelligence
+     */
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    /**
+     * @param intelligence the intelligence to set
+     */
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    /**
+     * @return the headhit
+     */
+    public int getHeadhit() {
+        return headhit;
+    }
+
+    /**
+     * @param headhit the headhit to set
+     */
+    public void setHeadhit(int headhit) {
+        this.headhit = headhit;
+    }
+
+    /**
+     * @return the armhit
+     */
+    public int getArmhit() {
+        return armhit;
+    }
+
+    /**
+     * @param armhit the armhit to set
+     */
+    public void setArmhit(int armhit) {
+        this.armhit = armhit;
+    }
+
+    /**
+     * @return the leghit
+     */
+    public int getLeghit() {
+        return leghit;
+    }
+
+    /**
+     * @param leghit the leghit to set
+     */
+    public void setLeghit(int leghit) {
+        this.leghit = leghit;
+    }
+
+    /**
+     * @return the bodyhit
+     */
+    public int getBodyhit() {
+        return bodyhit;
+    }
+
+    /**
+     * @param bodyhit the bodyhit to set
+     */
+    public void setBodyhit(int bodyhit) {
+        this.bodyhit = bodyhit;
     }
     
 }

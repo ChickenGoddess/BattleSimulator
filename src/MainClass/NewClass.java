@@ -60,8 +60,12 @@ public class NewClass {
                 //System.out.println(player2.getInitiative());
                 if(player1.getInitiative() > player2.getInitiative()){
                     System.out.println(be.execute(player1, player2));
+                    player2.setAttackNum(0);
+                    player1.setAttackNum(player1.getAttackNum() + 1);
                 } else if(player1.getInitiative() < player2.getInitiative()){
                     System.out.println(be.execute(player2, player1));
+                    player1.setAttackNum(0);
+                    player2.setAttackNum(player2.getAttackNum() + 1);
                 } else{
                     System.out.println(player1.getName() + " and " + player2.getName() + " clash blades!");
                 }

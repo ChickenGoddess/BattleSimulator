@@ -23,6 +23,12 @@ public class BattleEvent extends Event{
     private boolean powerAtk;
     private boolean scratch;
     private boolean crit;
+    private boolean rarm;
+    private boolean larm;
+    private boolean rleg;
+    private boolean lleg;
+    private boolean head;
+    private boolean body;
     
     public BattleEvent(Player p1, Player p2){
         this.p1 = p1;
@@ -68,6 +74,7 @@ public class BattleEvent extends Event{
         initiative += mod;
         mod = rand.nextInt(player.getDexterity()/5 + 1);
         initiative += mod;
+        initiative -= player.getAttackNum() * 2;
         player.setInitiative(initiative);
     }
     
@@ -75,9 +82,35 @@ public class BattleEvent extends Event{
         
         this.powerAtk = false;
         this.scratch = false;
+        this.rarm = false;
+        this.rleg = false;
+        this.larm = false;
+        this.lleg = false;
+        this.head = false;
+        this.body = false;
         
         this.p1 = p1;
         this.p2 = p2;
+        
+        int limb = rand.nextInt(100);
+        if(limb < (30)){
+            this.head = true;
+        }
+        else if(limb < (80)){
+            this.body = true;
+        }
+        else if(limb < (88)){
+            this.lleg = true;
+        }
+        else if(limb < (96)){
+            this.rleg = true;
+        }
+        else if(limb < (98)){
+            this.larm = true;
+        }
+        else{
+            this.rarm = true;
+        }
         
         int chance = p1.getAtk();
         int evade = p2.getDef();
@@ -101,7 +134,7 @@ public class BattleEvent extends Event{
         }
         evade += p2.getWeapon().getDef();
         if(p2.getWeapon().getType().equals(WeaponType.Fisticuffs)){
-            evade += rand.nextInt(p2.getHandtohand()/15);
+            evade += rand.nextInt(p2.getHandtohand()/15 + 1);
         } else if(p2.getWeapon().getType().equals(WeaponType.Axe) || 
                 p2.getWeapon().getType().equals(WeaponType.Dagger) || 
                 p2.getWeapon().getType().equals(WeaponType.Sword) || 
