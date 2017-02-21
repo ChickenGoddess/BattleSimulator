@@ -93,6 +93,21 @@ public class BattleEvent extends Event{
         this.p2 = p2;
         
         int limb = rand.nextInt(100);
+        if(p1.getAilments().contains(AilmentType.Pinned)){
+            if(limb < 30){
+                this.rleg = true;
+            } else if(limb < 60){
+                this.lleg = true;
+            } else if(limb < 90){
+                this.body = true;
+            } else if(limb < 95){
+                this.rarm = true;
+            } else{
+                this.larm = true;
+            }
+        } else if(p2.getAilments().contains(AilmentType.Pinned)){
+            
+        }
         if(limb < (30)){
             this.head = true;
         }
