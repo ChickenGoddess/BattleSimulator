@@ -37,6 +37,11 @@ public class Player {
     private int leftArmHealth;
     private int rightLegHealth;
     private int leftLegHealth;
+    private int curHeadHealth;
+    private int curRightArmHealth;
+    private int curLeftArmHealth;
+    private int curRightLegHealth;
+    private int curLeftLegHealth;
     
     //Affected Stats
     private String subPronoun;
@@ -56,23 +61,23 @@ public class Player {
     private int good;
     
     //Stats (can be 1 to 100)
-    private int intelligence; //Planning, striking places
-    private int strength; //Carrying Capacity
+    private int intelligence; //Planning, striking places (battle)
+    private int strength; //Carrying Capacity (battle)
     private int stealth; //First Strike + avoiding battle
-    private int handtohand; //Hand-to-hand fighting
-    private int melee; //melee fighting
-    private int ranged; //ranged fighting
-    private int survival; //Scavenging for materials and more food per item
-    private int medicine; //Healing ability and health
-    private int athletics; //Movement ability and health
-    private int hardiness; //Debuff resistance and health
+    private int handtohand; //Hand-to-hand fighting (battle)
+    private int melee; //melee fighting (battle)
+    private int ranged; //ranged fighting (battle)
+    private int survival; //Scavenging for materials and more food per item (battle)
+    private int medicine; //Healing ability and health (battle)
+    private int athletics; //Movement ability and health (battle)
+    private int hardiness; //Debuff resistance and health (battle)
     private int swimming; //Crossing bodies of water
     private int climbing; //Movement on hills, cliffs, and mountains
     private int courage; //Chance to confront dangers
     private int crafting; //Combining materials
     private int charisma; //Ability to convince and lead
     private int trapping; //Ability to create traps
-    private int dexterity; //Chance to dodge and 
+    private int dexterity; //Chance to dodge and strike (battle)
     
     //Player state
     private WeaponItem weapon;
@@ -119,6 +124,11 @@ public class Player {
         this.setLeftLegHealth((this.maxHealth/5) + (this.hardiness/3));
         this.setRightArmHealth((this.maxHealth/5) + (this.hardiness/3));
         this.setRightLegHealth((this.maxHealth/5) + (this.hardiness/3));
+        this.setCurHeadHealth((this.maxHealth/10) + (this.hardiness/5));
+        this.setCurLeftArmHealth((this.maxHealth/5) + (this.hardiness/3));
+        this.setCurLeftLegHealth((this.maxHealth/5) + (this.hardiness/3));
+        this.setCurRightArmHealth((this.maxHealth/5) + (this.hardiness/3));
+        this.setCurRightLegHealth((this.maxHealth/5) + (this.hardiness/3));
         this.setCarryingCapacity(25 + (this.strength/2));
         this.setMaxHunger(50 + (this.survival + this.hardiness)/5);
         this.setDef(this.dexterity / 10);
@@ -149,6 +159,7 @@ public class Player {
             }
         }
         this.setStrength(rand.nextInt(100) + 1);
+        this.setIntelligence(rand.nextInt(100) + 1);
         this.setAthletics(rand.nextInt(100) + 1);
         this.setCharisma(rand.nextInt(100) + 1);
         this.setClimbing(rand.nextInt(100) + 1);
@@ -169,14 +180,14 @@ public class Player {
     public void showStats(){
         System.out.println("Name: " + this.getName());
         System.out.println("Gender: " + this.getGender());
-        System.out.println("Max Health: " + this.getMaxHealth());
-        System.out.println("Current Health: " + this.getHealth());
+        System.out.println("Health: " + this.health + "/" + this.maxHealth);
         System.out.println("Preferred Weapon: " + this.getPreferredWeapon());
         System.out.println("Weapon: " + this.getWeapon().getName());
         System.out.println("Carrying Capacity: " + this.getCarryingCapacity());
         System.out.println("Inventory Space Left: " + (this.getCarryingCapacity() - this.getWeight()));
         System.out.println("Athletics: " + this.getAthletics());
         System.out.println("Strength: " + this.getStrength());
+        System.out.println("Intelligence: " + this.getIntelligence());
         System.out.println("Charisma: " + this.getCharisma());
         System.out.println("Climbing: " + this.getClimbing());
         System.out.println("Courage: " + this.getCourage());
@@ -983,6 +994,76 @@ public class Player {
      */
     public void setBodyhit(int bodyhit) {
         this.bodyhit = bodyhit;
+    }
+
+    /**
+     * @return the curHeadHealth
+     */
+    public int getCurHeadHealth() {
+        return curHeadHealth;
+    }
+
+    /**
+     * @param curHeadHealth the curHeadHealth to set
+     */
+    public void setCurHeadHealth(int curHeadHealth) {
+        this.curHeadHealth = curHeadHealth;
+    }
+
+    /**
+     * @return the curRightArmHealth
+     */
+    public int getCurRightArmHealth() {
+        return curRightArmHealth;
+    }
+
+    /**
+     * @param curRightArmHealth the curRightArmHealth to set
+     */
+    public void setCurRightArmHealth(int curRightArmHealth) {
+        this.curRightArmHealth = curRightArmHealth;
+    }
+
+    /**
+     * @return the curLeftArmHealth
+     */
+    public int getCurLeftArmHealth() {
+        return curLeftArmHealth;
+    }
+
+    /**
+     * @param curLeftArmHealth the curLeftArmHealth to set
+     */
+    public void setCurLeftArmHealth(int curLeftArmHealth) {
+        this.curLeftArmHealth = curLeftArmHealth;
+    }
+
+    /**
+     * @return the curRightLegHealth
+     */
+    public int getCurRightLegHealth() {
+        return curRightLegHealth;
+    }
+
+    /**
+     * @param curRightLegHealth the curRightLegHealth to set
+     */
+    public void setCurRightLegHealth(int curRightLegHealth) {
+        this.curRightLegHealth = curRightLegHealth;
+    }
+
+    /**
+     * @return the curLeftLegHealth
+     */
+    public int getCurLeftLegHealth() {
+        return curLeftLegHealth;
+    }
+
+    /**
+     * @param curLeftLegHealth the curLeftLegHealth to set
+     */
+    public void setCurLeftLegHealth(int curLeftLegHealth) {
+        this.curLeftLegHealth = curLeftLegHealth;
     }
     
 }

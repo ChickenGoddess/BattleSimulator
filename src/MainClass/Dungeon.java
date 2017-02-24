@@ -71,7 +71,7 @@ public class Dungeon {
                 break;
             }
         }
-        WeaponItem fisticuffs = new WeaponItem("fisticuffs");
+        WeaponItem fisticuffs = new WeaponItem("fists");
         fisticuffs.setItemID("fst");
         fisticuffs.setWeight(0);
         fisticuffs.setAtk(0);
